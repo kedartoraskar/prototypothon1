@@ -1,17 +1,17 @@
 package controllers
 
 import play.api.libs.json.Json
+import play.api.libs.json.JsObject
 import play.api.mvc._
+import utils.Util;
+
+
 /**
  * Created by ktoraskar on 7/6/15.
  */
 class Registration extends Controller {
 
-  var result :String =  null
-
-  def index = Action {
-    Ok(views.html.index("Hello Play"))
-  }
+  var result :JsObject =  null
 
   def registerClient(clientName:String) = Action {
 
@@ -20,14 +20,15 @@ class Registration extends Controller {
 
     // return a json response if registration was successful
 
-    if(clientName == "kedar") {
-      result = "status:registered"
+    if(clientName == "client1") {
+      result = Json.obj("status" -> "registered",
+                        "id" -> 1)
     }
     else {
-      result = "status:invalid"
+      result = Json.obj("status" -> "invalid")
     }
 
-    Ok(Json.toJson(result))
+    Ok(Util.jsonCreator(result))
 
   }
 

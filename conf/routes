@@ -4,7 +4,8 @@
 
 # Home page
 GET     /                           controllers.Application.index
-GET     /register/:clientName       controllers.Registration.registerClient(clientName:String)
+GET     /register                   controllers.Registration.registerClient(clientName:String)
+GET     /interaction                controllers.Interaction.beginInteraction(clientName:String, registrationId:String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
